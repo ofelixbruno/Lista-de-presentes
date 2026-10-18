@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Lista de presentes de brincadeira do casamento de Bruno e Nayara, 16 de janeiro de 2027.">
+<style>
+:root { color-scheme: light; }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+<title>Presentes Bruno e Nayara</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400..700&display=swap">
+<style>
+/* Layout: bazar de quermesse. Bandeirinhas no topo, titulo grande alinhado a esquerda, fichas de preco em grade. */
+:root {
+  --bg: #FBF7F1;
+  --surface: #FFFFFF;
+  --ink: #492E2E;
+  --muted: #76605C;
+  --line: #E6D8C3;
+  --accent: #CEA666;
+  --accent-ink: #492E2E;
+  --accent-text: #9A6F2E;
+  --flag1: #CEA666;
+  --flag2: #492E2E;
+  --flag3: #8B6330;
+  --flag4: #E9D4A8;
+  --chip: #F5E8D0;
+  --chip-ink: #6A4A1C;
+  --wa: #8B6330;
+  --wa-ink: #FFFFFF;
+  --hatch: #F2E9DB;
+  --scrim: rgba(73, 46, 46, .55);
+  --lock-bg: #492E2E;
+  --lock-ink: #F5EBDD;
+  --lock-muted: #E0CDB0;
+  --lock-line: #8B6330;
+  --error: #A8321F;
+  --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #231616;
+    --surface: #2F1F1F;
+    --ink: #F5EBDD;
+    --muted: #C7B3A6;
+    --line: #4A3434;
+    --accent: #CEA666;
+    --accent-ink: #2A1A12;
+    --accent-text: #E0BB7A;
+    --flag1: #CEA666;
+    --flag2: #F5EBDD;
+    --flag3: #A97C37;
+    --flag4: #6B4A3A;
+    --chip: #4A3A22;
+    --chip-ink: #F5E8D0;
+    --wa: #E0BB7A;
+    --wa-ink: #2A1A12;
+    --hatch: #2A1C1C;
+    --scrim: rgba(20, 12, 12, .65);
+    --lock-bg: #CEA666;
+    --lock-ink: #2A1A12;
+    --lock-muted: #4A3320;
+    --lock-line: #6B4A1C;
+    --error: #FF9A8A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #231616;
+  --surface: #2F1F1F;
+  --ink: #F5EBDD;
+  --muted: #C7B3A6;
+  --line: #4A3434;
+  --accent: #CEA666;
+  --accent-ink: #2A1A12;
+  --accent-text: #E0BB7A;
+  --flag1: #CEA666;
+  --flag2: #F5EBDD;
+  --flag3: #A97C37;
+  --flag4: #6B4A3A;
+  --chip: #4A3A22;
+  --chip-ink: #F5E8D0;
+  --wa: #E0BB7A;
+  --wa-ink: #2A1A12;
+  --hatch: #2A1C1C;
+  --scrim: rgba(20, 12, 12, .65);
+  --lock-bg: #CEA666;
+  --lock-ink: #2A1A12;
+  --lock-muted: #4A3320;
+  --lock-line: #6B4A1C;
+  --error: #FF9A8A;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.5;
+  padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 104px;
+}
+body.lock { overflow: hidden; }
+.wrap { max-width: 1040px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; }
+p { margin: 0; }
+button, input, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--flag3); outline-offset: 2px; }
+
+/* topo */
+.hero { display: grid; gap: 14px; padding-block: 28px 8px; }
+.kicker {
+  font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+}
+h1 { font-size: clamp(2.8rem, 10vw, 5.4rem); line-height: .94; font-weight: 800; letter-spacing: -0.02em; }
+h1 span { color: var(--accent-text); }
+.lead { max-width: 56ch; font-size: 1.1rem; color: var(--muted); }
+
+.stepsbox { margin-top: 20px; max-width: 460px; background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 14px; }
+.boxlabel { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.steps { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.steps li { display: flex; gap: 12px; align-items: baseline; min-width: 0; }
+.steps b { font-family: var(--display); font-size: 1.6rem; color: var(--accent-text); line-height: 1; }
+.steps span { color: var(--ink); }
+
+/* lista */
+.listhead { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px; margin-top: 48px; }
+h2 { font-size: 1.7rem; font-weight: 700; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 14px; margin-top: 16px; }
+.card {
+  display: flex; flex-direction: column; gap: 8px; min-width: 0;
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: 12px; padding: 18px;
+}
+.cardtop { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.tag { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: var(--chip); color: var(--chip-ink); padding: 3px 9px; border-radius: 999px; }
+.price { font-family: var(--display); font-weight: 800; font-size: 1.9rem; line-height: 1; letter-spacing: -0.01em; }
+.card h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.2; }
+.card .desc { color: var(--muted); font-size: 15px; flex: 1; }
+.cardfoot { border-top: 2px dashed var(--line); padding-top: 12px; margin-top: 4px; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
+  min-height: 46px; padding: 0 18px; border-radius: 10px; border: 2px solid var(--accent);
+  background: var(--accent); color: var(--accent-ink); font-weight: 700; cursor: pointer; text-decoration: none; text-align: center;
+}
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn.wa { background: var(--wa); color: var(--wa-ink); border-color: var(--wa); }
+.btn[disabled] { cursor: not-allowed; background: transparent; color: var(--muted); border-color: var(--line); }
+
+.locked-wrap { margin-top: 36px; }
+.card.locked { background: var(--lock-bg); color: var(--lock-ink); border-color: var(--lock-line); box-shadow: none; }
+.card.locked .btn[disabled] { background: transparent; color: var(--lock-ink); border-color: var(--lock-line); }
+.card.locked .cardfoot { border-top-color: var(--lock-line); }
+.card.locked .lockmsg { display: flex; gap: 10px; align-items: flex-start; font-weight: 700; }
+.card.locked svg { flex: none; width: 22px; height: 22px; stroke: var(--lock-ink); fill: none; stroke-width: 2; margin-top: 2px; }
+
+.foot { margin-top: 44px; max-width: 640px; background: var(--chip); color: var(--chip-ink); border: 2px solid var(--accent); border-radius: 14px; padding: 18px 20px; font-size: 1.1rem; line-height: 1.4; }
+.foot strong { display: block; font-family: var(--display); font-size: 1.5rem; margin-bottom: 4px; }
+
+.help {
+  position: fixed; z-index: 10; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 20px 0 16px; border-radius: 999px;
+  background: var(--wa); color: var(--wa-ink); text-decoration: none; font-weight: 700;
+  box-shadow: 0 10px 24px -8px rgba(0, 0, 0, .45);
+}
+.help svg { width: 26px; height: 26px; flex: none; }
+
+/* janela */
+.overlay {
+  position: fixed; inset: 0; z-index: 20; background: var(--scrim);
+  display: flex; align-items: flex-end; justify-content: center;
+  padding: env(safe-area-inset-top, 0px) max(0px, env(safe-area-inset-right, 0px)) 0 max(0px, env(safe-area-inset-left, 0px));
+}
+.sheet {
+  width: min(540px, 100%); max-height: 100%; overflow-y: auto; background: var(--surface); color: var(--ink);
+  border-radius: 16px 16px 0 0; padding: 22px max(18px, env(safe-area-inset-left, 0px)) calc(24px + env(safe-area-inset-bottom, 0px));
+  display: grid; gap: 16px;
+}
+@media (min-width: 640px) {
+  .overlay { align-items: center; padding: 24px; }
+  .sheet { border-radius: 16px; }
+}
+.sheethead { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
+.sheethead h3 { font-size: 1.4rem; font-weight: 700; line-height: 1.15; }
+.close { flex: none; width: 40px; height: 40px; border-radius: 10px; border: 1.5px solid var(--line); background: transparent; cursor: pointer; font-size: 20px; line-height: 1; }
+.summary { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 14px; background: var(--bg); border-radius: 10px; }
+.summary .price { font-size: 1.5rem; }
+.field { display: grid; gap: 6px; }
+.field label { font-weight: 600; }
+.field input {
+  min-height: 48px; padding: 0 14px; border-radius: 10px; border: 1.5px solid var(--line);
+  background: var(--bg); font-size: 16px; width: 100%;
+}
+.err { color: var(--error); font-size: 14px; min-height: 1.2em; }
+.form { display: grid; gap: 14px; }
+.stack { display: grid; gap: 12px; }
+.pixbox { display: grid; gap: 8px; }
+.pixbox textarea {
+  width: 100%; min-height: 104px; resize: none; padding: 10px 12px; border-radius: 10px; border: 1.5px solid var(--line);
+  background: var(--bg); font-family: var(--mono); font-size: 12px; line-height: 1.4; word-break: break-all;
+}
+.qr { background: #FFFFFF; padding: 10px; border-radius: 10px; width: fit-content; max-width: 100%; }
+.qr svg { display: block; width: min(240px, 70vw); height: auto; }
+.small { font-size: 14px; color: var(--muted); }
+.who { font-size: 14px; color: var(--muted); }
+.who b { color: var(--ink); }
+.parcel { border-top: 2px dashed var(--line); padding-top: 14px; display: grid; gap: 10px; }
+.parcel strong { font-family: var(--display); font-size: 1.1rem; }
+.num { font-family: var(--mono); font-size: 15px; color: var(--ink); user-select: all; }
+.toast {
+  position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 10px; font-weight: 600; z-index: 30;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sheet { animation: rise .22s ease-out; }
+  @keyframes rise { from { transform: translateY(16px); opacity: .6; } to { transform: none; opacity: 1; } }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <p class="kicker">Presentes de casamento · 16 de janeiro de 2027</p>
+    <h1>Bruno <span>&amp;</span> Nayara</h1>
+    <p class="lead">Como já temos tudo em casa (graças a Deus), os presentes viraram brincadeiras. Escolha o seu e pague pelo Pix ou no cartão de crédito (com juros). Dois itens só serão desbloqueados no casamento, dia 16/01.</p>
+    <div class="stepsbox">
+      <p class="boxlabel">Como funciona</p>
+      <ol class="steps">
+        <li><b>1</b><span>Escolha o que quer comprar</span></li>
+        <li><b>2</b><span>Informe seu nome e telefone</span></li>
+        <li><b>3</b><span>Pague pelo Pix do Bruno</span></li>
+      </ol>
+    </div>
+  </header>
+
+  <section class="locked-wrap">
+    <h2>Só no casamento</h2>
+    <div class="grid" id="locked"></div>
+  </section>
+
+  <section>
+    <div class="listhead">
+      <h2>Escolha o seu</h2>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <p class="foot"><strong>Quer parcelar?</strong> Depois de escolher o item, a página mostra o WhatsApp do Bruno para combinar as parcelas.</p>
+</div>
+
+<a class="help" href="https://wa.me/5545998286898?text=Ol%C3%A1%20quero%20tirar%20uma%20d%C3%BAvida%20sobre%20a%20lista%20de%20presentes%20do%20casamento" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><span>Tirar dúvidas</span></a>
+
+<div class="overlay" id="overlay" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <div class="sheethead">
+      <h3 id="sheet-title">Seus dados</h3>
+      <button class="close" type="button" id="close" aria-label="Fechar">×</button>
+    </div>
+    <div class="summary">
+      <span id="s-item"></span>
+      <span class="price" id="s-price"></span>
+    </div>
+
+    <form class="form" id="step1" novalidate>
+      <div class="field">
+        <label for="f-nome">Seu nome</label>
+        <input id="f-nome" type="text" autocomplete="name" placeholder="Nome e sobrenome">
+        <p class="err" id="e-nome" role="alert"></p>
+      </div>
+      <div class="field">
+        <label for="f-tel">Seu telefone com DDD</label>
+        <input id="f-tel" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="(45) 99999-9999">
+        <p class="err" id="e-tel" role="alert"></p>
+      </div>
+      <button class="btn" type="submit">Continuar para o Pix</button>
+    </form>
+
+    <div class="stack" id="step2" hidden>
+      <p>Obrigado, <b id="r-nome"></b>. Pague <b id="r-valor"></b> pelo Pix usando o código abaixo ou o QR code.</p>
+      <div class="pixbox">
+        <label class="small" for="pix-code">Pix copia e cola</label>
+        <textarea id="pix-code" readonly></textarea>
+        <button class="btn" type="button" id="copy">Copiar código Pix</button>
+        <p class="who">Beneficiário: <b>Bruno Felipe Felix Barreiros</b></p>
+        <p class="who">Banco: <b>Sicoob</b></p>
+        <p class="small">O código não traz um valor fixo, então digite <b id="r-valor2"></b> no aplicativo do banco antes de confirmar.</p>
+      </div>
+      <button class="btn ghost" type="button" id="qr-btn" aria-expanded="false">Mostrar QR code</button>
+      <div class="qr" id="qr" hidden><svg viewBox="0 0 61 61" class="segno"><path fill="#fff" d="M0 0h61v61h-61z"/><path class="qrline" stroke="#1b1b1b" d="M2 2.5h7m1 0h1m1 0h2m2 0h3m1 0h1m2 0h4m3 0h1m1 0h3m3 0h1m5 0h1m1 0h4m2 0h7m-57 1h1m5 0h1m1 0h3m2 0h1m1 0h3m1 0h1m2 0h1m1 0h2m4 0h1m1 0h2m1 0h4m3 0h1m1 0h1m2 0h1m2 0h1m5 0h1m-57 1h1m1 0h3m1 0h1m4 0h2m1 0h1m1 0h2m2 0h3m2 0h1m1 0h1m3 0h1m1 0h4m2 0h1m1 0h1m1 0h2m1 0h2m2 0h1m1 0h3m1 0h1m-57 1h1m1 0h3m1 0h1m1 0h2m3 0h3m1 0h5m1 0h1m3 0h1m2 0h4m2 0h1m1 0h2m3 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1m-57 1h1m1 0h3m1 0h1m4 0h1m1 0h1m2 0h2m1 0h1m1 0h3m2 0h5m2 0h1m1 0h1m2 0h1m5 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-57 1h1m5 0h1m3 0h1m3 0h1m1 0h1m1 0h1m1 0h2m2 0h3m3 0h1m1 0h1m1 0h2m1 0h2m1 0h1m4 0h2m3 0h1m5 0h1m-57 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-49 1h4m2 0h2m1 0h4m1 0h1m2 0h2m3 0h2m4 0h1m1 0h2m4 0h2m-46 1h1m1 0h2m1 0h3m2 0h1m2 0h4m1 0h2m1 0h1m2 0h1m1 0h6m1 0h3m3 0h5m1 0h4m1 0h1m2 0h1m1 0h2m-56 1h1m1 0h1m4 0h2m1 0h1m4 0h3m1 0h2m2 0h1m5 0h1m1 0h2m3 0h1m4 0h1m2 0h1m2 0h1m2 0h1m2 0h1m1 0h1m-56 1h1m2 0h5m2 0h1m1 0h2m2 0h1m2 0h1m4 0h3m2 0h1m1 0h2m2 0h1m2 0h1m2 0h1m1 0h4m1 0h1m3 0h1m1 0h2m-57 1h2m2 0h1m4 0h1m3 0h4m4 0h2m1 0h2m2 0h2m1 0h1m2 0h1m3 0h2m1 0h2m1 0h1m3 0h1m2 0h1m3 0h1m-55 1h2m1 0h5m4 0h1m2 0h1m2 0h3m1 0h4m1 0h4m1 0h1m1 0h1m1 0h3m7 0h2m2 0h1m1 0h1m2 0h1m-57 1h1m1 0h1m1 0h2m1 0h10m4 0h1m1 0h1m2 0h1m1 0h1m4 0h1m1 0h4m1 0h1m1 0h3m5 0h2m3 0h1m-56 1h2m1 0h2m1 0h1m2 0h4m2 0h1m2 0h2m1 0h1m1 0h1m3 0h1m3 0h1m3 0h3m2 0h1m4 0h1m2 0h1m1 0h4m1 0h1m-55 1h1m2 0h1m3 0h4m1 0h1m1 0h3m2 0h1m3 0h1m3 0h1m2 0h2m2 0h1m1 0h1m2 0h1m1 0h1m2 0h1m2 0h1m3 0h3m-55 1h1m2 0h4m1 0h1m3 0h1m2 0h1m1 0h2m1 0h1m3 0h3m5 0h2m1 0h1m1 0h3m1 0h4m1 0h1m1 0h1m1 0h1m2 0h2m-52 1h3m1 0h1m2 0h1m1 0h1m7 0h1m4 0h2m1 0h1m2 0h1m2 0h4m1 0h1m1 0h1m2 0h3m2 0h1m2 0h1m1 0h1m1 0h1m-56 1h2m2 0h2m5 0h2m3 0h3m2 0h1m6 0h1m4 0h1m1 0h3m1 0h2m1 0h2m2 0h4m2 0h2m-55 1h1m1 0h2m1 0h1m1 0h1m1 0h2m1 0h6m1 0h1m2 0h2m2 0h4m1 0h1m1 0h2m2 0h1m5 0h1m4 0h6m1 0h2m-55 1h2m1 0h2m1 0h2m1 0h2m1 0h1m2 0h2m1 0h2m2 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1m1 0h6m1 0h3m-55 1h1m6 0h3m1 0h2m3 0h2m1 0h6m2 0h1m2 0h2m3 0h9m1 0h1m2 0h1m2 0h2m1 0h1m1 0h1m-51 1h2m2 0h2m2 0h1m1 0h2m3 0h1m2 0h1m1 0h1m5 0h1m2 0h2m1 0h6m1 0h5m3 0h1m1 0h2m-56 1h3m1 0h1m3 0h2m1 0h1m1 0h1m2 0h2m6 0h1m1 0h1m1 0h1m4 0h1m1 0h1m1 0h2m1 0h1m2 0h1m2 0h1m1 0h3m3 0h2m-56 1h1m1 0h4m3 0h1m1 0h2m2 0h1m1 0h2m2 0h2m1 0h3m7 0h2m1 0h2m1 0h2m4 0h1m1 0h1m1 0h1m1 0h1m1 0h1m-55 1h2m1 0h2m1 0h2m1 0h2m2 0h1m1 0h3m1 0h4m3 0h1m1 0h1m1 0h2m4 0h3m3 0h2m2 0h1m2 0h1m4 0h1m-55 1h2m1 0h6m1 0h1m3 0h2m1 0h1m2 0h2m2 0h7m1 0h1m1 0h1m1 0h2m4 0h1m1 0h1m2 0h5m2 0h1m-55 1h4m3 0h1m2 0h3m6 0h3m3 0h1m3 0h3m1 0h1m2 0h1m1 0h1m1 0h2m2 0h2m1 0h1m3 0h3m-53 1h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h3m1 0h2m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m1 0h2m1 0h1m2 0h2m1 0h1m1 0h3m-51 1h1m3 0h2m3 0h3m2 0h5m3 0h1m3 0h1m2 0h1m2 0h2m2 0h1m2 0h2m1 0h1m1 0h1m3 0h1m3 0h1m-56 1h1m1 0h6m1 0h1m1 0h1m3 0h1m1 0h2m1 0h2m1 0h1m1 0h6m1 0h1m2 0h4m1 0h1m4 0h7m-52 1h2m4 0h3m3 0h2m1 0h2m4 0h1m3 0h2m2 0h3m1 0h1m2 0h2m1 0h2m1 0h1m1 0h1m3 0h1m2 0h1m2 0h1m-56 1h1m4 0h4m1 0h1m4 0h2m2 0h2m5 0h2m5 0h2m2 0h5m1 0h1m1 0h1m2 0h4m3 0h1m-53 1h1m6 0h1m4 0h1m2 0h2m1 0h1m1 0h1m2 0h2m2 0h1m1 0h1m2 0h3m4 0h1m6 0h1m1 0h1m1 0h1m1 0h2m-57 1h1m3 0h3m3 0h1m1 0h2m1 0h3m5 0h5m1 0h1m2 0h4m2 0h1m1 0h1m5 0h2m2 0h2m1 0h1m-54 1h1m1 0h1m2 0h1m1 0h1m1 0h4m1 0h1m1 0h2m2 0h1m2 0h2m1 0h1m2 0h2m1 0h1m1 0h1m2 0h1m7 0h2m1 0h1m1 0h1m1 0h1m2 0h1m-52 1h3m4 0h3m1 0h1m1 0h2m2 0h3m1 0h2m6 0h4m1 0h1m4 0h1m5 0h1m2 0h2m-53 1h3m5 0h4m3 0h3m3 0h2m1 0h2m5 0h1m2 0h2m1 0h4m1 0h1m1 0h1m1 0h2m6 0h1m-55 1h1m2 0h1m1 0h1m3 0h1m2 0h1m6 0h3m1 0h5m4 0h1m1 0h1m2 0h3m1 0h1m1 0h1m1 0h1m2 0h1m3 0h1m1 0h1m-56 1h1m1 0h2m3 0h1m3 0h1m5 0h1m1 0h1m1 0h1m2 0h1m2 0h1m1 0h1m1 0h3m2 0h1m4 0h2m1 0h2m1 0h5m2 0h1m1 0h1m-57 1h4m2 0h1m1 0h2m5 0h1m2 0h1m1 0h3m1 0h1m1 0h4m2 0h1m1 0h1m2 0h2m2 0h1m2 0h2m1 0h1m2 0h3m1 0h1m1 0h1m-57 1h1m1 0h1m2 0h1m2 0h1m1 0h3m1 0h1m2 0h2m1 0h2m1 0h1m1 0h1m2 0h1m2 0h1m1 0h2m2 0h1m1 0h2m5 0h3m3 0h1m3 0h1m-57 1h1m1 0h1m1 0h1m1 0h2m1 0h3m1 0h9m1 0h3m2 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m7 0h2m-55 1h1m1 0h2m3 0h2m2 0h1m3 0h2m2 0h1m1 0h2m3 0h1m2 0h1m1 0h1m2 0h2m1 0h3m1 0h2m5 0h1m1 0h3m1 0h2m-56 1h2m2 0h2m1 0h1m3 0h2m1 0h1m6 0h3m2 0h1m1 0h2m1 0h1m1 0h2m1 0h2m1 0h1m2 0h1m2 0h1m4 0h1m1 0h3m-56 1h2m1 0h2m4 0h2m1 0h1m3 0h1m1 0h3m1 0h1m1 0h1m1 0h2m4 0h2m1 0h1m1 0h1m1 0h4m4 0h3m1 0h1m1 0h4m-57 1h1m1 0h1m2 0h2m1 0h1m1 0h2m3 0h3m1 0h2m4 0h2m1 0h1m1 0h2m1 0h2m6 0h1m2 0h1m2 0h2m1 0h1m2 0h2m1 0h1m-57 1h5m2 0h1m2 0h2m2 0h2m1 0h1m4 0h1m1 0h5m3 0h1m1 0h1m1 0h2m1 0h2m3 0h1m1 0h2m2 0h1m1 0h1m-47 1h1m1 0h2m2 0h1m1 0h4m3 0h2m3 0h5m4 0h2m8 0h1m2 0h5m2 0h1m-48 1h5m2 0h1m1 0h1m1 0h3m3 0h2m3 0h1m1 0h1m3 0h1m1 0h2m1 0h1m1 0h2m3 0h1m3 0h2m-54 1h7m1 0h3m7 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m2 0h2m3 0h1m2 0h3m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m-55 1h1m5 0h1m1 0h3m4 0h1m1 0h5m2 0h1m1 0h1m3 0h2m1 0h2m1 0h2m2 0h2m1 0h3m2 0h1m3 0h4m-56 1h1m1 0h3m1 0h1m3 0h3m1 0h1m1 0h2m1 0h1m2 0h1m2 0h8m3 0h3m2 0h2m1 0h9m2 0h1m-56 1h1m1 0h3m1 0h1m1 0h1m2 0h2m4 0h2m2 0h1m3 0h3m1 0h1m4 0h1m1 0h1m3 0h3m3 0h4m1 0h1m1 0h1m1 0h1m-56 1h1m1 0h3m1 0h1m1 0h1m5 0h3m1 0h1m1 0h5m1 0h2m1 0h1m4 0h2m3 0h2m1 0h3m1 0h1m1 0h1m1 0h2m-52 1h1m5 0h1m2 0h3m2 0h1m1 0h2m2 0h4m1 0h2m2 0h1m1 0h1m3 0h1m1 0h2m1 0h1m1 0h1m1 0h4m2 0h4m2 0h1m-57 1h7m1 0h2m1 0h6m2 0h2m2 0h3m2 0h4m2 0h2m3 0h2m1 0h1m5 0h1m1 0h5"/></svg></div>
+      <a class="btn wa" id="wa-pedido" target="_blank" rel="noopener">Enviar meu pedido no WhatsApp</a>
+      <p class="small">O botão abre o WhatsApp do Bruno com seu nome, telefone e item já escritos. Depois de pagar, mande o comprovante por lá.</p>
+      <div class="parcel">
+        <strong>Quer parcelar?</strong>
+        <p class="small">Chame o Bruno no WhatsApp <span class="num">(45) 99828-6898</span> para combinar as parcelas.</p>
+        <a class="btn ghost" id="wa-parcela" target="_blank" rel="noopener">Combinar parcelas no WhatsApp</a>
+      </div>
+      <button class="btn ghost" type="button" id="back">Corrigir meus dados</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(function () {
+  var PIX = "00020126580014br.gov.bcb.pix0136795802d9-c8df-4656-97c5-25d89b1f07ed5204000053039865802BR5925BRUNO_FELIPE_FELIX_BARREI6008Cascavel610985811-85762290525FC4A045290741792292595784630490A2";
+  var WA = "5545998286898";
+
+  var ITENS = [
+    { id: "p01", tipo: "item", nome: "Cafezinho do noivo na manhã seguinte", desc: "Para ele acordar com cara de casado feliz.", valor: 30 },
+    { id: "p02", tipo: "acao", nome: "Lenço de papel para quando a noiva chorar", desc: "Entrega rápida, discreta e com lágrima garantida.", valor: 50 },
+    { id: "p03", tipo: "item", nome: "Kit sobrevivência da noiva", desc: "Grampo, band-aid e muita paciência.", valor: 100 },
+    { id: "p04", tipo: "acao", nome: "Pagar o primeiro drink do noivo", desc: "Para ele brindar com a coragem em dia.", valor: 70 },
+    { id: "p05", tipo: "item", nome: "Primeiro almoço como casados", desc: "Para ninguém descobrir já no primeiro dia que ninguém sabe cozinhar.", valor: 100 },
+    { id: "p06", tipo: "acao", nome: "Avisar oficialmente quando a comida sair da cozinha", desc: "Você grita e o salão inteiro agradece.", valor: 100 },
+    { id: "p07", tipo: "acao", nome: "Cartão amarelo se o noivo falar de trabalho", desc: "Válido durante toda a festa, inclusive na pista.", valor: 200 },
+    { id: "p08", tipo: "item", nome: "Pedaço do bolo", desc: "O maior da mesa.", valor: 150 },
+    { id: "p09", tipo: "acao", nome: "Sugerir a música que abre a pista de dança", desc: "Sua playlist, seu risco.", valor: 200 },
+    { id: "p10", tipo: "item", nome: "Conta de luz do casal por um mês", desc: "Para ligar o ar e a TV sem susto.", valor: 150 },
+    { id: "p11", tipo: "acao", nome: "Pagar a fiança do noivo se ele fugir do altar", desc: "É melhor ele não fugir.", valor: 500 },
+    { id: "p12", tipo: "item", nome: "Jantar romântico na lua de mel", desc: "Mesa para dois, vela no meio e celular guardado.", valor: 300 },
+    { id: "p13", tipo: "item", nome: "Uma noite de hospedagem na lua de mel", desc: "Com direito a não sair do quarto.", valor: 700 },
+    { id: "p14", tipo: "item", nome: "Passagem para a lua de mel", desc: "Para a viagem sair do papel e entrar na mala.", valor: 3000 },
+    { id: "p15", tipo: "item", nome: "Seguro contra briga por causa do controle remoto", desc: "Cobertura total para o sofá e para a paz.", valor: 350 },
+    { id: "p16", tipo: "item", nome: "Parcela da Shein da noiva", desc: "A caixa chega e o marido finge que não viu.", valor: 300 },
+    { id: "p17", tipo: "item", nome: "Massagem para o casal na lua de mel", desc: "Para os dois relaxarem depois de tanta festa.", valor: 400 },
+    { id: "p18", tipo: "item", nome: "Frigobar cheio para o casal", desc: "Nada de sair de madrugada atrás de comida.", valor: 450 },
+    { id: "p19", tipo: "item", nome: "Aliança reserva", desc: "Para o caso de uma delas se perder na praia.", valor: 800 },
+    { id: "p20", tipo: "item", nome: "Um sofá novo", desc: "Para o marido ter onde dizer que já vai levantar.", valor: 700 },
+    { id: "p21", tipo: "item", nome: "Jantar de um ano de casados", desc: "O primeiro aniversário merece mesa reservada.", valor: 700 },
+    { id: "p22", tipo: "item", nome: "Cota das passagens aéreas da lua de mel", desc: "Você vai na foto, mas não na mala.", valor: 800 },
+    { id: "p23", tipo: "item", nome: "Ar-condicionado do quarto", desc: "Encerra de vez a discussão da temperatura.", valor: 1000 },
+    { id: "p24", tipo: "item", nome: "Passeios na lua de mel", desc: "Para voltar com foto, história e protetor solar vencido.", valor: 1200 },
+    { id: "p25", tipo: "item", nome: "Roupas novas para o casal com vida nova", desc: "Vida nova pede guarda-roupa novo.", valor: 1500 }
+  ];
+  var BLOQUEADOS = [
+    { id: "b1", nome: "Gravata do noivo" },
+    { id: "b2", nome: "Sapatinho da noiva" }
+  ];
+  var MSG_BLOQ = "Esse estará liberado apenas no casamento 16/01";
+
+  var brl = function (v) {
+    return v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  };
+  var $ = function (id) { return document.getElementById(id); };
+
+  var grid = $("grid"), lockedGrid = $("locked"), overlay = $("overlay");
+  var current = null, lastFocus = null, toastTimer = null;
+
+  function renderGrid() {
+    var list = ITENS.slice()
+      .sort(function (a, b) { return a.valor - b.valor; });
+    grid.innerHTML = list.map(function (i) {
+      return '<article class="card">' +
+        '<div class="cardtop"><span class="tag">' + (i.tipo === "item" ? "Item" : "Ação") + '</span></div>' +
+        '<div class="price">' + brl(i.valor) + '</div>' +
+        '<h3>' + i.nome + '</h3>' +
+        '<p class="desc">' + i.desc + '</p>' +
+        '<div class="cardfoot"><button class="btn" type="button" data-id="' + i.id + '">Quero esse</button></div>' +
+        '</article>';
+    }).join("");
+  }
+
+  function renderLocked() {
+    var lock = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+    lockedGrid.innerHTML = BLOQUEADOS.map(function (i) {
+      return '<article class="card locked">' +
+        '<h3>' + i.nome + '</h3>' +
+        '<p class="lockmsg">' + lock + '<span>' + MSG_BLOQ + '</span></p>' +
+        '<div class="cardfoot"><button class="btn" type="button" disabled>Bloqueado</button></div>' +
+        '</article>';
+    }).join("");
+  }
+
+  grid.addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-id]");
+    if (!btn) return;
+    var item = ITENS.filter(function (i) { return i.id === btn.getAttribute("data-id"); })[0];
+    if (item) openSheet(item, btn);
+  });
+
+  function showStep(n) {
+    $("step1").hidden = n !== 1;
+    $("step2").hidden = n !== 2;
+    $("sheet-title").textContent = n === 1 ? "Seus dados" : "Pagamento por Pix";
+  }
+
+  function openSheet(item, trigger) {
+    current = item;
+    lastFocus = trigger;
+    $("s-item").textContent = item.nome;
+    $("s-price").textContent = brl(item.valor);
+    $("e-nome").textContent = "";
+    $("e-tel").textContent = "";
+    showStep(1);
+    overlay.hidden = false;
+    document.body.classList.add("lock");
+    setTimeout(function () { $("f-nome").focus(); }, 30);
+  }
+
+  function closeSheet() {
+    overlay.hidden = true;
+    document.body.classList.remove("lock");
+    if (lastFocus) { try { lastFocus.focus(); } catch (e) {} }
+  }
+
+  $("close").addEventListener("click", closeSheet);
+  overlay.addEventListener("click", function (e) { if (e.target === overlay) closeSheet(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !overlay.hidden) closeSheet(); });
+
+  $("f-tel").addEventListener("input", function (e) {
+    var d = e.target.value.replace(/\D/g, "").slice(0, 11);
+    var out = d;
+    if (d.length > 7) out = "(" + d.slice(0, 2) + ") " + d.slice(2, 7) + "-" + d.slice(7);
+    else if (d.length > 2) out = "(" + d.slice(0, 2) + ") " + d.slice(2);
+    else if (d.length > 0) out = "(" + d;
+    e.target.value = out;
+  });
+
+  $("step1").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var nome = $("f-nome").value.trim().replace(/\s+/g, " ");
+    var tel = $("f-tel").value.trim();
+    var digits = tel.replace(/\D/g, "");
+    var ok = true;
+    $("e-nome").textContent = "";
+    $("e-tel").textContent = "";
+    if (nome.length < 3) { $("e-nome").textContent = "Informe seu nome para o Bruno saber quem comprou."; ok = false; }
+    if (digits.length < 10) { $("e-tel").textContent = "Informe o telefone com DDD."; ok = false; }
+    if (!ok) { (nome.length < 3 ? $("f-nome") : $("f-tel")).focus(); return; }
+
+    var valor = brl(current.valor);
+    $("r-nome").textContent = nome.split(" ")[0];
+    $("r-valor").textContent = valor;
+    $("r-valor2").textContent = valor;
+    $("pix-code").value = PIX;
+    $("copy").textContent = "Copiar código Pix";
+    $("qr").hidden = true;
+    $("qr-btn").textContent = "Mostrar QR code";
+    $("qr-btn").setAttribute("aria-expanded", "false");
+
+    var m1 = "Oi, Bruno! Sou " + nome + ", meu telefone é " + tel + ". Escolhi nos presentes de casamento: " + current.nome + " (" + valor + "). Vou pagar por Pix e mando o comprovante por aqui.";
+    var m2 = "Oi, Bruno! Sou " + nome + ", meu telefone é " + tel + ". Quero parcelar este item dos presentes de casamento: " + current.nome + " (" + valor + "). Como a gente combina?";
+    $("wa-pedido").href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(m1);
+    $("wa-parcela").href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(m2);
+    showStep(2);
+    document.querySelector(".sheet").scrollTop = 0;
+  });
+
+  $("back").addEventListener("click", function () { showStep(1); $("f-nome").focus(); });
+
+  $("qr-btn").addEventListener("click", function () {
+    var show = $("qr").hidden;
+    $("qr").hidden = !show;
+    $("qr-btn").textContent = show ? "Esconder QR code" : "Mostrar QR code";
+    $("qr-btn").setAttribute("aria-expanded", show ? "true" : "false");
+  });
+
+  function toast(msg) {
+    var t = $("toast");
+    t.textContent = msg;
+    t.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.hidden = true; }, 2400);
+  }
+
+  $("copy").addEventListener("click", function () {
+    var ta = $("pix-code");
+    var done = function (ok) {
+      if (ok) { $("copy").textContent = "Código copiado"; toast("Código Pix copiado"); }
+      else { ta.focus(); ta.select(); toast("Toque no código, selecione e copie"); }
+    };
+    var fallback = function () {
+      try { ta.focus(); ta.select(); done(document.execCommand("copy")); } catch (err) { done(false); }
+    };
+    try {
+      navigator.clipboard.writeText(PIX).then(function () { done(true); }, fallback);
+    } catch (err) { fallback(); }
+  });
+
+  renderGrid();
+  renderLocked();
+})();
+</script>
+</body>
+</html>
