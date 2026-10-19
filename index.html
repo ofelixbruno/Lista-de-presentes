@@ -2803,11 +2803,24 @@ var qrcode = function() {
     var recado = $("f-recado").value.trim();
     if (SHEET_URL) {
       try {
-        fetch(SHEET_URL, {
-          method: "POST", mode: "no-cors", redirect: "follow",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify({ nome: nome, telefone: tel, item: current.nome, valor: current.valor, recado: recado })
-        }).catch(function (er) { if (window.console) console.warn("recado nao enviado", er); });
+        var fr = document.getElementById("recado-frame");
+        if (!fr) {
+          fr = document.createElement("iframe");
+          fr.id = "recado-frame"; fr.name = "recado-frame"; fr.setAttribute("aria-hidden", "true"); fr.tabIndex = -1;
+          fr.style.cssText = "position:absolute;width:0;height:0;border:0;visibility:hidden";
+          document.body.appendChild(fr);
+        }
+        var fm = document.createElement("form");
+        fm.method = "POST"; fm.action = SHEET_URL; fm.target = "recado-frame"; fm.style.display = "none";
+        var campos = { nome: nome, telefone: tel, item: current.nome, valor: String(current.valor), recado: recado };
+        Object.keys(campos).forEach(function (k) {
+          var inp = document.createElement("input");
+          inp.type = "hidden"; inp.name = k; inp.value = campos[k];
+          fm.appendChild(inp);
+        });
+        document.body.appendChild(fm);
+        fm.submit();
+        setTimeout(function () { if (fm.parentNode) fm.parentNode.removeChild(fm); }, 2000);
       } catch (err) {}
     }
     $("r-nome").textContent = nome.split(" ")[0];
