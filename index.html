@@ -2804,10 +2804,10 @@ var qrcode = function() {
     if (SHEET_URL) {
       try {
         fetch(SHEET_URL, {
-          method: "POST", mode: "no-cors", keepalive: true,
+          method: "POST", mode: "no-cors", redirect: "follow",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify({ nome: nome, telefone: tel, item: current.nome, valor: current.valor, recado: recado })
-        }).catch(function () {});
+        }).catch(function (er) { if (window.console) console.warn("recado nao enviado", er); });
       } catch (err) {}
     }
     $("r-nome").textContent = nome.split(" ")[0];
