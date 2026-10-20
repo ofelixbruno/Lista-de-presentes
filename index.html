@@ -417,6 +417,11 @@ body.lock .help { display: none; }
     </div>
 
     <form class="form" id="step1" novalidate>
+      <div class="field" id="field-valor" hidden>
+        <label for="f-valor">Quanto você quer dar? <span class="hint">(a partir de R$ 10)</span></label>
+        <input id="f-valor" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex.: 150">
+        <p class="err" id="e-valor" role="alert"></p>
+      </div>
       <div class="field">
         <label for="f-nome">Seu nome</label>
         <input id="f-nome" type="text" autocomplete="name" placeholder="Nome e sobrenome">
@@ -2834,8 +2839,10 @@ var qrcode = function() {
     { id: "p22", tipo: "item", nome: "Cota das passagens aéreas da lua de mel", pix: "Cota das passagens aereas lua de mel", desc: "Você vai na foto, mas não na mala.", valor: 800 },
     { id: "p23", tipo: "item", nome: "Ar-condicionado do quarto", pix: "Ar-condicionado do quarto", desc: "Encerra de vez a discussão da temperatura.", valor: 1000 },
     { id: "p24", tipo: "item", nome: "Passeios na lua de mel", pix: "Passeios na lua de mel", desc: "Para voltar com foto, história e protetor solar vencido.", valor: 1200 },
-    { id: "p25", tipo: "item", nome: "Roupas novas para o casal com vida nova", pix: "Roupas novas para o casal", desc: "Vida nova pede guarda-roupa novo.", valor: 1500 }
+    { id: "p25", tipo: "item", nome: "Roupas novas para o casal com vida nova", pix: "Roupas novas para o casal", desc: "Vida nova pede guarda-roupa novo.", valor: 1500 },
+    { id: "p26", tipo: "acao", nome: "Valor livre", pix: "Valor livre", desc: "Quer dar outro valor? Escolha o quanto cabe no seu coração e no seu bolso.", valor: 0, livre: true }
   ];
+  var VALOR_MIN = 10, VALOR_MAX = 10000;
   var BLOQUEADOS = [
     { id: "b1", nome: "Gravata do noivo" },
     { id: "b2", nome: "Sapatinho da noiva" }
@@ -2852,13 +2859,16 @@ var qrcode = function() {
 
   function renderGrid() {
     var list = ITENS.slice()
-      .sort(function (a, b) { return a.valor - b.valor; });
+      .sort(function (a, b) {
+        if (a.livre !== b.livre) return a.livre ? 1 : -1;
+        return a.valor - b.valor;
+      });
     grid.innerHTML = list.map(function (i) {
       return '<article class="card">' +
-        '<div class="cardtop"><span class="tag">' + (i.tipo === "item" ? "Item" : "Ação") + '</span><span class="price">' + brl(i.valor) + '</span></div>' +
+        '<div class="cardtop"><span class="tag">' + (i.tipo === "item" ? "Item" : "Ação") + '</span><span class="price">' + (i.livre ? "Você escolhe" : brl(i.valor)) + '</span></div>' +
         '<h3>' + i.nome + '</h3>' +
         '<p class="desc">' + i.desc + '</p>' +
-        '<div class="cardfoot"><button class="btn" type="button" data-id="' + i.id + '">Quero esse</button></div>' +
+        '<div class="cardfoot"><button class="btn" type="button" data-id="' + i.id + '">' + (i.livre ? "Escolher valor" : "Quero esse") + '</button></div>' +
         '</article>';
     }).join("");
   }
@@ -2918,14 +2928,17 @@ var qrcode = function() {
     current = item;
     lastFocus = trigger;
     $("s-item").textContent = item.nome;
-    $("s-price").textContent = brl(item.valor);
+    $("s-price").textContent = item.livre ? "Você escolhe" : brl(item.valor);
+    $("field-valor").hidden = !item.livre;
+    $("f-valor").value = "";
+    $("e-valor").textContent = "";
     $("e-nome").textContent = "";
     $("e-tel").textContent = "";
     $("f-recado").value = "";
     showStep(1);
     overlay.hidden = false;
     document.body.classList.add("lock");
-    setTimeout(function () { $("f-nome").focus(); }, 30);
+    setTimeout(function () { (item.livre ? $("f-valor") : $("f-nome")).focus(); }, 30);
   }
 
   function closeSheet() {
@@ -2947,26 +2960,42 @@ var qrcode = function() {
     e.target.value = out;
   });
 
+  function lerValor(txt) {
+    var t = String(txt).replace(/[^\d,.]/g, "");
+    if (!t) return NaN;
+    if (t.indexOf(",") !== -1) t = t.replace(/\./g, "").replace(",", ".");
+    else if (/^\d{1,3}(\.\d{3})+$/.test(t)) t = t.replace(/\./g, "");
+    return Math.round(parseFloat(t));
+  }
+
   $("step1").addEventListener("submit", function (e) {
     e.preventDefault();
     var nome = $("f-nome").value.trim().replace(/\s+/g, " ");
     var tel = $("f-tel").value.trim();
     var digits = tel.replace(/\D/g, "");
     var ok = true;
+    var val = current.valor;
+    $("e-valor").textContent = "";
     $("e-nome").textContent = "";
     $("e-tel").textContent = "";
+    if (current.livre) {
+      val = lerValor($("f-valor").value);
+      if (!(val >= VALOR_MIN)) { $("e-valor").textContent = "Informe um valor a partir de R$ 10."; ok = false; }
+      else if (val > VALOR_MAX) { $("e-valor").textContent = "Para valores acima de R$ 10.000, fale direto com o Bruno pelo WhatsApp."; ok = false; }
+    }
     if (nome.length < 3) { $("e-nome").textContent = "Informe seu nome para o Bruno saber quem comprou."; ok = false; }
     if (digits.length < 10) { $("e-tel").textContent = "Informe o telefone com DDD."; ok = false; }
-    if (!ok) { (nome.length < 3 ? $("f-nome") : $("f-tel")).focus(); return; }
+    if (!ok) { (current.livre && $("e-valor").textContent ? $("f-valor") : nome.length < 3 ? $("f-nome") : $("f-tel")).focus(); return; }
 
-    var valor = brl(current.valor);
+    var valor = brl(val);
     var recado = $("f-recado").value.trim();
-    if (SHEET_URL) { enviarRecado({ nome: nome, telefone: tel, item: current.nome, valor: String(current.valor), recado: recado }); }
+    if (SHEET_URL) { enviarRecado({ nome: nome, telefone: tel, item: current.nome, valor: String(val), recado: recado }); }
     $("r-nome").textContent = nome.split(" ")[0];
+    $("s-price").textContent = valor;
     $("r-valor").textContent = valor;
     $("r-valor2").textContent = valor;
     var code = PIX;
-    try { code = buildPix(current.valor, current.pix || current.nome); } catch (err) { code = PIX; }
+    try { code = buildPix(val, current.pix || current.nome); } catch (err) { code = PIX; }
     $("pix-code").value = code;
     try { $("qr").innerHTML = qrSvg(code); } catch (err) { $("qr").innerHTML = ""; }
     $("copy").textContent = "Copiar código Pix";
