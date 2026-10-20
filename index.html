@@ -224,6 +224,8 @@ h2 { font-size: clamp(1.5rem, 5vw, 2rem); font-weight: 500; }
 .btn[disabled] { cursor: not-allowed; background: transparent; color: var(--muted); border-color: var(--line); }
 
 .locked-wrap { margin-top: clamp(40px, 8vw, 60px); }
+#locked { display: flex; flex-wrap: wrap; justify-content: center; }
+#locked .card.locked { flex: 0 1 300px; max-width: 100%; }
 .card.locked { background: var(--lock-bg); color: var(--lock-ink); border-color: var(--lock-line); box-shadow: none; }
 .card.locked .btn[disabled] { background: transparent; color: var(--lock-ink); border-color: var(--lock-line); }
 .card.locked .cardfoot { border-top-color: var(--lock-line); }
