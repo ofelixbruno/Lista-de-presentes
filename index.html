@@ -235,9 +235,10 @@ h2 { font-size: clamp(1.5rem, 5vw, 2rem); font-weight: 500; }
 .endnames span { color: var(--accent-text); }
 .endmsg { margin: 8px 0 0; font-size: 1.15rem; color: var(--ink); }
 .rot { margin: 20px auto 0; width: min(100%, 300px); height: 76px; padding: 0 14px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; background: var(--chip); border: 2px solid var(--accent); border-radius: 14px; }
-.rot span { display: block; font-family: var(--display); font-weight: 700; font-size: 1.2rem; line-height: 1.2; color: var(--accent-text); transition: opacity .25s ease, transform .25s ease; }
-.rot.out span { opacity: 0; transform: translateY(6px); }
-@media (prefers-reduced-motion: reduce) { .rot span { transition: none; } }
+.rot { position: relative; overflow: hidden; }
+.rot span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 14px; font-family: var(--display); font-weight: 700; font-size: 1.2rem; line-height: 1.2; color: var(--accent-text); opacity: 0; transform: translateY(42px); filter: blur(3px); transition: opacity .9s ease, transform 1.2s cubic-bezier(.22,.7,.2,1), filter .9s ease; will-change: opacity, transform, filter; }
+.rot span.on { opacity: 1; transform: none; filter: blur(0); }
+.rot span.off { opacity: 0; transform: translateY(-42px); filter: blur(3px); }
 
 .help {
   position: fixed; z-index: 10; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
@@ -392,7 +393,7 @@ body.lock .help { display: none; }
   <footer class="endnote">
     <p class="endnames">Bruno <span>&amp;</span> Nayara</p>
     <p class="endmsg">Esperamos vocês no nosso casamento!</p>
-    <div class="rot" aria-live="off"><span id="rot"></span></div>
+    <div class="rot" aria-live="off"><span id="rot"></span><span id="rot2"></span></div>
     <div class="venue" id="local">
       <span class="venue-cap">Local do casamento</span>
       <strong>Pauletto Eventos</strong>
@@ -3048,19 +3049,24 @@ var qrcode = function() {
 
   /* nomes rotativos no rodapé */
   (function () {
-    var nomes = ["Rodolfo e Gleisse", "Alexsandro Gomes", "Elizangela Silveira", "Yasmin Gomes", "Ana e Mikaell", "Ana Luiza", "Elizandro Zete", "Elvis e Elizeth", "Erika e Kauã", "Isa e Jonathan", "Jean e Amanda", "Sheila e Claudinei", "Wagner Xavier", "Luiz e Flaviany", "Nathalia e Pedro", "Carlos e Mavi", "Débora Lunardi", "Gustavo e Amanda", "Ruth e Enoque", "Marilene", "Nerli, Claudio e Samuel", "Elcio e Nadir", "Amanda Liotto", "Daniel e Carine", "Arthur e Sabrina", "Rômulo, Raquel e Júnior", "Roque", "Ricardo", "Domingos e Nika", "Neri", "Ana Consalter", "Cynthia, Marcos e Ana", "Cássio Consalter", "Leonardo e Alessandra", "Tânia, Eder e Heloísa", "Samyra e Pedro", "Henrique, Daiane, Gustavo e Gabriel", "Clézio, Adriana e Benício", "Alexandre, Luciane e Benjamin", "Júnior, Mariana e filhos", "Marcos, Flávia e filhas", "Guilherme, Ana e filhas", "Natalyne", "Victor, Francielly, Samuel, Davi, Maria", "Nelsi e Larissa", "Pedro Martins", "Ivone e Vilmar", "Evellyn", "Júlia Rosa", "Kauene"];
-    var el = document.getElementById("rot"), box = el.parentNode;
-    if (!el || !nomes.length) return;
-    var k = 0;
-    el.textContent = nomes[0];
+    var nomes = ["Rodolfo e Gleisse", "Alexsandro Gomes", "Elizangela Silveira", "Yasmin Gomes", "Ana e Mikaell", "Ana Luiza", "Elizandro Zete", "Elvis e Elizeth", "Erika e Kauã", "Isa e Jonathan", "Jean e Amanda", "Sheila e Claudinei", "Wagner Xavier", "Luiz e Flaviany", "Nathalia e Pedro", "Carlos e Mavi", "Débora Lunardi", "Gustavo e Amanda", "Ruth e Enoque", "Marilene", "Nerli, Claudio e Samuel", "Elcio e Nadir", "Amanda Liotto", "Daniel e Carine", "Arthur e Sabrina", "Rômulo, Raquel e Júnior", "Roque", "Ricardo", "Domingos e Nika", "Neri", "Ana Consalter", "Cynthia, Marcos e Ana", "Cássio Consalter", "Leonardo e Alessandra", "Tânia, Eder e Heloísa", "Samyra e Pedro", "Henrique, Daiane, Gustavo e Gabriel", "Clézio, Adriana e Benício", "Alexandre, Luciane e Benjamin", "Júnior, Mariana e filhos", "Marcos, Flávia Paola e Sofia", "Guilherme, Ana e filhas", "Natalyne", "Victor, Francielly, Samuel, Davi, Maria", "Nelsi e Larissa", "Pedro Martins", "Ivone e Vilmar", "Evellyn", "Júlia Rosa", "Kauene", "Camila, Luana e Vitória", "Maria Terezinha"];
+    var a = document.getElementById("rot"), b = document.getElementById("rot2");
+    if (!a || !b || !nomes.length) return;
+    var k = 0, atual = a, prox = b;
+    a.textContent = nomes[0];
+    requestAnimationFrame(function () { requestAnimationFrame(function () { a.classList.add("on"); }); });
     setInterval(function () {
-      box.classList.add("out");
-      setTimeout(function () {
-        k = (k + 1) % nomes.length;
-        el.textContent = nomes[k];
-        box.classList.remove("out");
-      }, 250);
-    }, 1500);
+      k = (k + 1) % nomes.length;
+      prox.classList.remove("off", "on");
+      prox.textContent = nomes[k];
+      void prox.offsetWidth;
+      atual.classList.remove("on");
+      atual.classList.add("off");
+      prox.classList.add("on");
+      var saiu = atual;
+      setTimeout(function () { saiu.classList.remove("off"); }, 1200);
+      var t = atual; atual = prox; prox = t;
+    }, 2600);
   })();
 
   /* contador regressivo ate o casamento: 16/01/2027 as 17h (Brasilia) */
